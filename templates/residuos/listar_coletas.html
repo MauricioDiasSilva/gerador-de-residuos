@@ -1,0 +1,16 @@
+<!-- templates/listar_coletas.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listar Coletas</title>
+</head>
+<body>
+    <h1>Coletas Registradas</h1>
+    <ul>
+        {% for coleta in coletas %}
+            <li>Tipo: {{ coleta.residuo.get_tipo_display }} - Quantidade: {{ coleta.residuo.quantidade }} kg - Data: {{ coleta.data_coleta }} - Localização: {{ coleta.localizacao }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

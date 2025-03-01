@@ -1,0 +1,38 @@
+/* static/css/styles.css */
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 56px;
+}
+
+.container {
+    flex: 1;
+}
+
+footer {
+    background-color: #f5f5f5;
+    padding: 10px 0;
+}
+
+.card-img-top {
+    height: auto;
+    width: 100%;
+    max-height: 200px;
+    /* Ajuste a altura máxima conforme necessário */
+    object-fit: contain;
+    /* Garante que a imagem mantenha a proporção sem cortes */
+}
+
+/* static/css/styles.css */
+.card-img-preview {
+    height: 100px;
+    /* Ajuste a altura conforme necessário */
+    width: auto;
+    object-fit: contain;
+    /* Garante que a imagem mantenha a proporção sem cortes */
+}

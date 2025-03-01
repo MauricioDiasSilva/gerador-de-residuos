@@ -1,0 +1,39 @@
+<!-- templates/residuos/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Sustentabilidade Divertida - Gerenciador de Resíduos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Sustentabilidade Divertida</h1>
+        <p class="lead">Conquiste Recompensas Reciclando! Transforme seu lixo em mimos e brinquedos com nosso projeto de sustentabilidade.</p>
+        <hr class="my-4">
+        <p>Veja abaixo as opções de prêmios que você pode trocar com seus pontos.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'catalogo_recompensas' %}" role="button">Ver Catálogo de Recompensas</a>
+    </div>
+
+    <h2>Itens Disponíveis para Troca</h2>
+    <div class="row">
+        {% for recompensa in recompensas %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    {% if recompensa.imagem %}
+                        <img src="{{ recompensa.imagem.url }}" class="card-img-top card-img-preview" alt="{{ recompensa.nome }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recompensa.nome }}</h5>
+                        <p class="card-text">{{ recompensa.descricao }}</p>
+                        <p class="card-text">Vale: {{ recompensa.pontos_necessarios }} pontos</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,40 @@
+<!-- templates/residuos/catalogo_recompensas.html -->
+{% extends 'base.html' %}
+
+{% block title %}Catálogo de Recompensas - Gerenciador de Resíduos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Catálogo de Recompensas</h1>
+    <h2>Seus Pontos: {{ pontos }}</h2>
+    <div class="row">
+        {% for recompensa in recompensas %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    {% if recompensa.imagem %}
+                        <img src="{{ recompensa.imagem.url }}" class="card-img-top" alt="{{ recompensa.nome }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recompensa.nome }}</h5>
+                        <p class="card-text">{{ recompensa.descricao }}</p>
+                        <p class="card-text">Vale: {{ recompensa.pontos_necessarios }} pontos</p>
+                        {% if pontos >= recompensa.pontos_necessarios %}
+                            <form method="post" action="{% url 'trocar_recompensa' recompensa.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Trocar por {{ recompensa.nome }}</button>
+                            </form>
+                        {% else %}
+                            <p class="text-danger">Pontos insuficientes</p>
+                        {% endif %}
+                        {% if recompensa.empresa %}
+                            <p class="small text-muted">Doado por: {{ recompensa.empresa }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
